@@ -1,51 +1,45 @@
-﻿@using MailKit.Net.Smtp
-@using MimeKit
-@using PersonalStaticApp.Client.Models
+﻿@using PersonalStaticApp.Client.Models
+@using PersonalStaticApp.Shared
+@inject HttpClient Http
+
+
 <div class="section contact">
     <div class="title nats">
         <h2 id="Contact">Get in touch</h2>
-        <p>@Environment.GetEnvironmentVariable("SMTPHost")</p>
-        <p>@Environment.GetEnvironmentVariable("SMTPUsername")</p>
-        <p>@Environment.GetEnvironmentVariable("SMTPPassword")</p>
-        <p>@Environment.GetEnvironmentVariable("SMTPSendToCSV")</p>
     </div>
-    <EditForm Model="EmailRequest" FormName="EmailForm" OnSubmit="SendEmail">
+    <EditForm Model="emailRequest" FormName="EmailForm" OnSubmit="HandleValidSubmit">
         <AntiforgeryToken />
-        <InputText @bind-Value="EmailRequest.Name" placeholder="Name"/>
-        <InputText @bind-Value="EmailRequest.Email" placeholder="Email" />
-        <InputTextArea @bind-Value="EmailRequest.Body" placeholder="Message" />
+        <ValidationSummary />
+        <InputText @bind-Value="emailRequest.Name" placeholder="Name" />
+        <InputText @bind-Value="emailRequest.Email" placeholder="Email" />
+        <InputTextArea @bind-Value="emailRequest.Body" placeholder="Message" />
         <button type="submit" class="btn btn-primary">Send</button>
     </EditForm>
 </div>
 
+@if (isSuccess)
+{
+    <p>Message sent successfully!</p>
+}
+
 @code {
-    [SupplyParameterFromForm(FormName = "EmailForm")]
-    EmailRequest EmailRequest { get; set; } = new();
+    private EmailRequest emailRequest = new EmailRequest();
+    private bool isSuccess = false;
 
-    void SendEmail()
+    private async Task HandleValidSubmit()
     {
-        var email = new MimeMessage();
-        var sendToCVS = Environment.GetEnvironmentVariable("SMTPSendToCSV");
-        email.From.Add(MailboxAddress.Parse(EmailRequest.Email));
-        if (String.IsNullOrEmpty(sendToCVS))
-            return;
-
-        var sentToList = sendToCVS.Split(',');
-        foreach (var sendToAddress in sentToList)
+        try
         {
-            email.To.Add(MailboxAddress.Parse(sendToAddress));
+
+            var forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("/api/responsedata") ?? new WeatherForecast[] { };
+
+            var response = await Http.PostAsJsonAsync("/api/contact", emailRequest);
+            isSuccess = response.IsSuccessStatusCode;
         }
-
-        email.Subject = $"Contact from {EmailRequest.Name} | {EmailRequest.Email} via TheLemic.co.uk";
-        email.Body = new TextPart(MimeKit.Text.TextFormat.Html)
+        catch (HttpRequestException ex)
         {
-            Text = EmailRequest.Body
-        };
-
-        using var smtp = new SmtpClient();
-        smtp.Connect(Environment.GetEnvironmentVariable("SMTPHost"), 587, MailKit.Security.SecureSocketOptions.StartTls);
-        smtp.Authenticate(Environment.GetEnvironmentVariable("SMTPUsername"), Environment.GetEnvironmentVariable("SMTPPassword"));
-        smtp.Send(email);
-        smtp.Disconnect(true);
+            Console.WriteLine($"Request error: {ex.Message}");
+            isSuccess = false;
+        }
     }
 }
