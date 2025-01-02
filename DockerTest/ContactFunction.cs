@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 using System.Net;
 using PersonalStaticApp.Client.Models;
 
-namespace API
+namespace Api
 {
     public class ContactFunction
     {
