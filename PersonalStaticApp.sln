@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client", "Client\Client.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared", "Shared\Shared.csproj", "{DA2371A3-4788-4B2A-A0F0-0FF8EBB4C948}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "DockerTest\Api.csproj", "{0B924853-6EDF-4567-BD7C-F5A7353A436D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DockerFunctions", "DockerFunctions\DockerFunctions.csproj", "{FA0C9A71-F25E-47DF-976C-75A8BCD84786}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{DA2371A3-4788-4B2A-A0F0-0FF8EBB4C948}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA2371A3-4788-4B2A-A0F0-0FF8EBB4C948}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA2371A3-4788-4B2A-A0F0-0FF8EBB4C948}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0B924853-6EDF-4567-BD7C-F5A7353A436D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0B924853-6EDF-4567-BD7C-F5A7353A436D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0B924853-6EDF-4567-BD7C-F5A7353A436D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0B924853-6EDF-4567-BD7C-F5A7353A436D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA0C9A71-F25E-47DF-976C-75A8BCD84786}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA0C9A71-F25E-47DF-976C-75A8BCD84786}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA0C9A71-F25E-47DF-976C-75A8BCD84786}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA0C9A71-F25E-47DF-976C-75A8BCD84786}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

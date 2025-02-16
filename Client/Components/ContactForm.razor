@@ -31,8 +31,6 @@
         try
         {
 
-            var forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("/api/responsedata") ?? new WeatherForecast[] { };
-
             var response = await Http.PostAsJsonAsync("/api/contact", emailRequest);
             isSuccess = response.IsSuccessStatusCode;
         }
