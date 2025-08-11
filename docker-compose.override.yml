@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  client:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    volumes:
+      - ./Client:/src/Client:cached
+      - ./Shared:/src/Shared:cached
+
+  api:
+    environment:
+      - AZURE_FUNCTIONS_ENVIRONMENT=Development
+      - AzureFunctionsJobHost__Logging__Console__IsEnabled=true
+      - SMTPHost=localhost
+      - SMTPUsername=dev@example.com
+      - SMTPPassword=devpassword
+    volumes:
+      - ./DockerFunctions:/src/DockerFunctions:cached
+      - ./Shared:/src/Shared:cached

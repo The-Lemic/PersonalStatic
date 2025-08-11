@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  client:
+    build:
+      context: .
+      dockerfile: Client/Dockerfile
+    ports:
+      - "8080:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+    depends_on:
+      - api
+
+  api:
+    build:
+      context: .
+      dockerfile: DockerFunctions/Dockerfile
+    ports:
+      - "7071:8080"
+    environment:
+      - AZURE_FUNCTIONS_ENVIRONMENT=Development
+      - AzureWebJobsStorage=UseDevelopmentStorage=true
+      # Add your SMTP settings here
+      - SMTPHost=${SMTP_HOST}
+      - SMTPUsername=${SMTP_USERNAME}
+      - SMTPPassword=${SMTP_PASSWORD}
+    volumes:
+      # Optional: Mount for local development
+      - ./DockerFunctions:/home/site/wwwroot:ro
+
+networks:
+  default:
+    name: personalstatic-network
