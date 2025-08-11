@@ -1,0 +1,39 @@
+# Development Dockerfile with hot reload support for Azure Functions
+FROM mcr.microsoft.com/azure-functions/dotnet-isolated:4-dotnet-isolated8.0-slim
+
+# Install dotnet SDK for hot reload
+USER root
+RUN apt-get update && apt-get install -y \
+    wget \
+    ca-certificates \
+    && wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh \
+    && chmod +x dotnet-install.sh \
+    && ./dotnet-install.sh --channel 8.0 --install-dir /usr/share/dotnet \
+    && rm dotnet-install.sh \
+    && apt-get clean
+
+# Set environment for development
+ENV ASPNETCORE_ENVIRONMENT=Development
+ENV DOTNET_USE_POLLING_FILE_WATCHER=true
+ENV DOTNET_RUNNING_IN_CONTAINER=true
+ENV AzureWebJobsScriptRoot=/src/DockerFunctions
+ENV AzureFunctionsJobHost__Logging__Console__IsEnabled=true
+
+WORKDIR /src
+
+# Copy project files
+COPY ["DockerFunctions/DockerFunctions.csproj", "DockerFunctions/"]
+COPY ["Shared/Shared.csproj", "Shared/"]
+
+# Restore dependencies
+RUN dotnet restore "DockerFunctions/DockerFunctions.csproj"
+
+# Copy source code (this will be overridden by volume mount)
+COPY . .
+
+WORKDIR /src/DockerFunctions
+
+EXPOSE 8080
+
+# Use dotnet watch for hot reload
+CMD ["dotnet", "watch", "run", "--urls", "http://0.0.0.0:8080"]

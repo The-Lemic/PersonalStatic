@@ -9,12 +9,21 @@ services:
       - ./Shared:/src/Shared:cached
 
   api:
+    build:
+      context: .
+      dockerfile: DockerFunctions/Dockerfile.dev
     environment:
       - AZURE_FUNCTIONS_ENVIRONMENT=Development
       - AzureFunctionsJobHost__Logging__Console__IsEnabled=true
+      - DOTNET_USE_POLLING_FILE_WATCHER=true
+      - DOTNET_RUNNING_IN_CONTAINER=true
       - SMTPHost=localhost
       - SMTPUsername=dev@example.com
       - SMTPPassword=devpassword
     volumes:
       - ./DockerFunctions:/src/DockerFunctions:cached
       - ./Shared:/src/Shared:cached
+      # Mount dotnet tools and nuget cache for better performance
+      - ~/.nuget/packages:/root/.nuget/packages:cached
+    stdin_open: true
+    tty: true
