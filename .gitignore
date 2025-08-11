@@ -344,3 +344,6 @@ healthchecksdb
 /playwright-report/
 /playwright/.cache/
 Client/local.settings.json
+.env
+CLAUDE.md
+.claude/settings.local.json
