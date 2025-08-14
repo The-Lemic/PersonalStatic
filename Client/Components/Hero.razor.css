@@ -33,11 +33,11 @@
 }
 
 .hero h1 {
-    font-size: 60px;
+    font-size: 3.125vw;
 }
 
 .hero h2 {
-    font-size: 50px;
+    font-size: 2.6vw;
     padding-bottom: 80px;
 }
 
@@ -48,7 +48,7 @@ button {
     border: 2px solid var(--secondary);
     height: 70px;
     width: 250px;
-    font-size: 28px;
+    font-size: 1.45vw;
     outline: none;
     background: linear-gradient(to top, var(--secondary) 50%, transparent 50%);
     background-size: 100% 200%;
