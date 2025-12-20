@@ -11,13 +11,13 @@
     {
         <EditForm Model="emailRequest" FormName="EmailForm" OnSubmit="HandleValidSubmit" class="contact-form">
             <AntiforgeryToken />
-            <div class="form-group">
-                <InputText @bind-Value="emailRequest.Name" placeholder="Name" class="form-input" />
+            <div class="form-group form-group-name">
+                <InputText @bind-Value="emailRequest.Name" placeholder="Name" class="form-input input-name" />
             </div>
-            <div class="form-group">
-                <InputText @bind-Value="emailRequest.Email" placeholder="Email" class="form-input" />
+            <div class="form-group form-group-email">
+                <InputText @bind-Value="emailRequest.Email" placeholder="Email" class="form-input input-email" />
             </div>
-            <div class="form-group">
+            <div class="form-group form-group-message">
                 <InputTextArea @bind-Value="emailRequest.Body" placeholder="Message" class="form-textarea" rows="5" />
             </div>
             <button type="submit" class="btn-send" disabled="@isSubmitting">
