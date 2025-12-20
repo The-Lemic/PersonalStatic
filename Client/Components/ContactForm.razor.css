@@ -1,12 +1,11 @@
 ﻿.contact {
-    aspect-ratio: 1902/1408;
     width: 100%;
-    min-height: 600px;
+    min-height: fit-content;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: top;
     background-size: cover;
     background-image: url(images/footer.svg);
-    padding: clamp(3rem, 8vw, 6rem) clamp(1rem, 3vw, 2rem);
+    padding: 20rem 1rem 5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,26 +21,31 @@
 }
 
 /* Contact Form Styling */
-.contact-form {
+.contact-form,
+::deep .contact-form,
+::deep form.contact-form {
     width: 100%;
-    max-width: 520px;
+    max-width: 1020px;
     display: flex;
     flex-direction: column;
-    gap: clamp(1rem, 2.5vw, 1.25rem);
+    align-self: center;
 }
 
-.form-group {
+.form-group,
+::deep .form-group {
     width: 100%;
     position: relative;
+    margin: 10px;
+    align-self: center;
 }
 
 /* Style all inputs and textarea */
-.form-input,
-.form-textarea,
-input.form-input,
-textarea.form-textarea,
-.form-group input,
-.form-group textarea {
+::deep .form-input,
+::deep .form-textarea,
+::deep input.form-input,
+::deep textarea.form-textarea,
+.form-group ::deep input,
+.form-group ::deep textarea {
     width: 100% !important;
     padding: clamp(0.875rem, 2vw, 1rem) clamp(1rem, 2.5vw, 1.25rem) !important;
     font-size: clamp(0.95rem, 1.8vw, 1.05rem) !important;
@@ -54,9 +58,9 @@ textarea.form-textarea,
     transition: all 0.2s ease;
 }
 
-/* Add icons to name and email inputs - targeting by position */
-.form-group:nth-child(2) input,
-.form-group:nth-child(2) .form-input {
+/* Add icons to name input */
+.form-group-name ::deep input,
+.form-group-name ::deep .input-name {
     background-image: url('images/PersonIcon.svg') !important;
     background-repeat: no-repeat !important;
     background-position: clamp(0.875rem, 2vw, 1rem) center !important;
@@ -65,8 +69,9 @@ textarea.form-textarea,
     padding-left: clamp(3rem, 6vw, 3.5rem) !important;
 }
 
-.form-group:nth-child(3) input,
-.form-group:nth-child(3) .form-input {
+/* Add icons to email input */
+.form-group-email ::deep input,
+.form-group-email ::deep .input-email {
     background-image: url('images/EmailIcon.svg') !important;
     background-repeat: no-repeat !important;
     background-position: clamp(0.875rem, 2vw, 1rem) center !important;
@@ -75,25 +80,27 @@ textarea.form-textarea,
     padding-left: clamp(3rem, 6vw, 3.5rem) !important;
 }
 
-.form-input::placeholder,
-.form-textarea::placeholder,
-input::placeholder,
-textarea::placeholder {
+::deep .form-input::placeholder,
+::deep .form-textarea::placeholder,
+::deep input::placeholder,
+::deep textarea::placeholder {
     color: rgba(0, 0, 0, 0.45) !important;
 }
 
-.form-input:focus,
-.form-textarea:focus,
-input:focus,
-textarea:focus {
+::deep .form-input:focus,
+::deep .form-textarea:focus,
+::deep input:focus,
+::deep textarea:focus {
     outline: none !important;
     background-color: #E5E5E5 !important;
 }
 
-.form-textarea {
-    resize: vertical;
-    min-height: clamp(200px, 28vh, 250px);
-    padding-top: clamp(1rem, 2.5vw, 1.25rem);
+::deep .form-textarea,
+::deep textarea.form-textarea,
+.form-group-message ::deep textarea {
+    resize: vertical !important;
+    min-height: clamp(200px, 28vh, 250px) !important;
+    padding-top: clamp(1rem, 2.5vw, 1.25rem) !important;
 }
 
 .btn-send {
@@ -187,20 +194,31 @@ textarea:focus {
     font-weight: bold;
 }
 
+/* Standard */
+@media (max-width: 1920px) {
+    .contact {
+        padding: 15rem 1rem 4rem;
+    }
+
+}
+
 /* Tablet */
 @media (max-width: 768px) {
     .contact {
-        min-height: 500px;
-        padding: 2.5rem 1.5rem;
+        min-height: fit-content;
+        padding: 10rem 1rem 3rem;
     }
 
-    .contact-form {
+    .contact-form,
+    ::deep .contact-form,
+    ::deep form.contact-form {
+        width: 100%;
         max-width: 100%;
-        gap: 1.125rem;
     }
 
-    .form-textarea {
-        min-height: 180px;
+    ::deep .form-textarea,
+    ::deep textarea {
+        min-height: 180px !important;
     }
 
     .btn-send {
@@ -219,30 +237,28 @@ textarea:focus {
 /* Mobile */
 @media (max-width: 480px) {
     .contact {
-        min-height: 400px;
-        aspect-ratio: auto;
-        padding: 2rem 1rem;
+        min-height: fit-content;
+        /*padding: 2rem 1rem;*/
     }
 
-    .contact-form {
-        gap: 1rem;
+    ::deep .form-input,
+    ::deep .form-textarea,
+    ::deep input,
+    ::deep textarea {
+        padding: 0.875rem 1rem !important;
+        font-size: 1rem !important;
     }
 
-    .form-input,
-    .form-textarea {
-        padding: 0.875rem 1rem;
-        font-size: 1rem;
+    .form-group-name ::deep input,
+    .form-group-email ::deep input {
+        padding-left: 2.75rem !important;
+        background-size: 1.25rem auto !important;
+        background-position: 0.875rem center !important;
     }
 
-    .form-group:nth-child(1) .form-input,
-    .form-group:nth-child(2) .form-input {
-        padding-left: 2.75rem;
-        background-size: 1.25rem auto;
-        background-position: 0.875rem center;
-    }
-
-    .form-textarea {
-        min-height: 160px;
+    ::deep .form-textarea,
+    ::deep textarea {
+        min-height: 160px !important;
     }
 
     .btn-send {
