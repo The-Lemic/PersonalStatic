@@ -25,9 +25,6 @@ services:
       - SMTPHost=${SMTP_HOST}
       - SMTPUsername=${SMTP_USERNAME}
       - SMTPPassword=${SMTP_PASSWORD}
-    volumes:
-      # Optional: Mount for local development
-      - ./DockerFunctions:/home/site/wwwroot:ro
 
 networks:
   default:

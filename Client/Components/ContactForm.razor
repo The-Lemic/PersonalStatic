@@ -7,37 +7,93 @@
     <div class="title nats">
         <h2 id="Contact">Get in touch</h2>
     </div>
-    <EditForm Model="emailRequest" FormName="EmailForm" OnSubmit="HandleValidSubmit">
-        <AntiforgeryToken />
-        <ValidationSummary />
-        <InputText @bind-Value="emailRequest.Name" placeholder="Name" />
-        <InputText @bind-Value="emailRequest.Email" placeholder="Email" />
-        <InputTextArea @bind-Value="emailRequest.Body" placeholder="Message" />
-        <button type="submit" class="btn btn-primary">Send</button>
-    </EditForm>
+
+    @if (!isSuccess)
+    {
+        <EditForm Model="emailRequest" FormName="EmailForm" OnSubmit="HandleValidSubmit" class="contact-form">
+            <AntiforgeryToken />
+            <div class="form-group">
+                <InputText @bind-Value="emailRequest.Name" placeholder="Name" class="form-input" />
+            </div>
+            <div class="form-group">
+                <InputText @bind-Value="emailRequest.Email" placeholder="Email" class="form-input" />
+            </div>
+            <div class="form-group">
+                <InputTextArea @bind-Value="emailRequest.Body" placeholder="Message" class="form-textarea" rows="5" />
+            </div>
+            <button type="submit" class="btn-send" disabled="@isSubmitting">
+                @if (isSubmitting)
+                {
+                    <span>Sending...</span>
+                }
+                else
+                {
+                    <span>Send Message</span>
+                }
+            </button>
+        </EditForm>
+    }
+    else
+    {
+        <div class="success-message">
+            <p>Thank you for reaching out! Your message has been sent successfully.</p>
+        </div>
+    }
 </div>
 
-@if (isSuccess)
+@if (showToast)
 {
-    <p>Message sent successfully!</p>
+    <div class="toast @(isSuccess ? "toast-success" : "toast-error")">
+        <div class="toast-content">
+            @if (isSuccess)
+            {
+                <span class="toast-icon">✓</span>
+                <span>Message sent successfully!</span>
+            }
+            else
+            {
+                <span class="toast-icon">✗</span>
+                <span>Failed to send message. Please try again.</span>
+            }
+        </div>
+    </div>
 }
 
 @code {
     private EmailRequest emailRequest = new EmailRequest();
     private bool isSuccess = false;
+    private bool isSubmitting = false;
+    private bool showToast = false;
 
     private async Task HandleValidSubmit()
     {
+        isSubmitting = true;
+
         try
         {
-
             var response = await Http.PostAsJsonAsync("/api/contact", emailRequest);
             isSuccess = response.IsSuccessStatusCode;
+
+            // Show toast
+            showToast = true;
+
+            // Hide toast after 3 seconds
+            await Task.Delay(3000);
+            showToast = false;
         }
         catch (HttpRequestException ex)
         {
             Console.WriteLine($"Request error: {ex.Message}");
             isSuccess = false;
+
+            // Show error toast
+            showToast = true;
+            await Task.Delay(3000);
+            showToast = false;
+        }
+        finally
+        {
+            isSubmitting = false;
         }
     }
 }

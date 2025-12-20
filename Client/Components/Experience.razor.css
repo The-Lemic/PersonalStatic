@@ -1,27 +1,30 @@
 ﻿.timeline {
     color: var(--light);
+    padding: clamp(1rem, 3vw, 2rem);
 }
 
 .dot {
-    height: 60px;
-    width: 60px;
+    height: clamp(3rem, 6vw, 3.75rem);
+    width: clamp(3rem, 6vw, 3.75rem);
     background-color: var(--primary);
     border-radius: 50%;
-    display: inline-block;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 28px;
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    flex-shrink: 0;
 }
 
 .timeline-event {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    gap: clamp(1rem, 2vw, 2rem);
 }
 
 .timeline-heading, .job-details, .spacer {
     width: 40%;
+    max-width: 600px;
 }
 
 .line-container {
@@ -31,55 +34,243 @@
 }
 
 .line {
-    border-left: 5px solid var(--primary);
-    border-radius: 5px;
-    margin: 20px 0;
+    border-left: clamp(3px, 0.5vw, 5px) solid var(--primary);
+    border-radius: 0.3rem;
+    margin: clamp(1rem, 2vw, 1.25rem) 0;
     flex-grow: 1;
+    min-height: 2rem;
 }
 
 .gradient {
     border-image: linear-gradient(to bottom, var(--primary), transparent);
     border-image-slice: 1;
-    border-radius: 5px;
+    border-radius: 0.3rem;
     background-image: linear-gradient(var(--primary), var(--primary)), linear-gradient(to right, transparent, transparent);
     background-origin: border-box;
     background-clip: content-box, border-box;
 }
 
-.timeline-heading {
+.timeline-heading h3 {
+    font-size: clamp(2rem, 5vw, 3.375rem);
+    margin: 0;
 }
 
-    .timeline-heading h3 {
-        font-size: 54px;
-    }
-
-    .timeline-heading p {
-        font-size: 20px;
-        color: #CBCBCB;
-        margin: 0;
-    }
+.timeline-heading p {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: #CBCBCB;
+    margin: 0;
+}
 
 .job-details {
-    padding: 40px;
-    padding-bottom: 20px;
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    padding-bottom: clamp(1rem, 2vw, 1.25rem);
 }
-
 
     .job-details h4 {
         color: #DD3C7F;
-        font-size: 40px;
+        font-size: clamp(1.75rem, 4vw, 2.5rem);
+        margin: 0 0 0.5rem 0;
     }
 
     .job-details h5 {
-        font-size: 24px;
+        font-size: clamp(1.125rem, 2.5vw, 1.5rem);
         color: #CBCBCB;
+        margin: 0 0 1rem 0;
     }
 
     .job-details p {
-        padding: 20px 80px 20px 0;
-        font-size: 20px;
+        padding: clamp(1rem, 2vw, 1.25rem) clamp(2rem, 5vw, 5rem) clamp(1rem, 2vw, 1.25rem) 0;
+        font-size: clamp(1rem, 2vw, 1.25rem);
+        margin: 0;
+        line-height: 1.6;
     }
 
-.top {
-    margin-top: 50px;
+/* Timeline on left layout for smaller screens */
+@media (max-width: 900px) {
+    .timeline {
+        padding: 1.5rem 1rem;
+    }
+
+    .timeline-heading {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 2.5rem;
+    }
+
+    .timeline-heading h3 {
+        font-size: clamp(1.75rem, 4vw, 2.5rem);
+    }
+
+    .timeline-heading p {
+        font-size: clamp(0.9rem, 2vw, 1.125rem);
+    }
+
+    /* All timeline events: timeline on left, job details on right */
+    .timeline-event {
+        flex-direction: row;
+        gap: 1.5rem;
+        align-items: flex-start;
+    }
+
+    .spacer {
+        display: none;
+    }
+
+    .line-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: auto;
+        flex-shrink: 0;
+        order: 0 !important;
+    }
+
+    .dot {
+        height: clamp(2.5rem, 5vw, 3.5rem);
+        width: clamp(2.5rem, 5vw, 3.5rem);
+        font-size: clamp(1rem, 2vw, 1.5rem);
+        margin: 0;
+        flex-shrink: 0;
+    }
+
+    .line {
+        min-height: 6rem;
+        flex-grow: 1;
+        width: 0;
+        border-left: 3px solid var(--primary);
+        margin: 0.75rem 0;
+    }
+
+    /* Last line should extend to the bottom */
+    .timeline-event:last-child .line {
+        min-height: 2rem;
+    }
+
+    .job-details {
+        flex: 1;
+        width: auto !important;
+        padding: 0 0 2.5rem 0;
+        text-align: left;
+        order: 1 !important;
+    }
+
+    .job-details h4 {
+        font-size: clamp(1.5rem, 3vw, 2rem);
+    }
+
+    .job-details h5 {
+        font-size: clamp(1rem, 2vw, 1.25rem);
+    }
+
+    .job-details p {
+        padding: 1.25rem 0 0 0;
+        font-size: clamp(0.9rem, 1.8vw, 1.125rem);
+    }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+    .timeline {
+        padding: 1.5rem 1rem;
+    }
+
+    .timeline-heading h3 {
+        font-size: 2.25rem;
+    }
+
+    .timeline-heading p {
+        font-size: 1rem;
+    }
+
+    .line-container {
+        order: 0 !important;
+    }
+
+    .dot {
+        height: 3rem;
+        width: 3rem;
+        font-size: 1.25rem;
+    }
+
+    .line {
+        min-height: 5rem;
+        margin: 0.75rem 0;
+    }
+
+    .timeline-event:last-child .line {
+        min-height: 2rem;
+    }
+
+    .job-details {
+        order: 1 !important;
+    }
+
+    .job-details h4 {
+        font-size: 1.75rem;
+    }
+
+    .job-details h5 {
+        font-size: 1.125rem;
+    }
+
+    .job-details p {
+        font-size: 1rem;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .timeline {
+        padding: 1rem 0.5rem;
+    }
+
+    .timeline-heading h3 {
+        font-size: 1.75rem;
+    }
+
+    .timeline-heading p {
+        font-size: 0.875rem;
+    }
+
+    .timeline-event {
+        gap: 1rem;
+    }
+
+    .line-container {
+        flex-shrink: 0;
+        order: 0 !important;
+    }
+
+    .dot {
+        height: 2.5rem;
+        width: 2.5rem;
+        font-size: 1rem;
+        flex-shrink: 0;
+    }
+
+    .line {
+        min-height: 4rem;
+        margin: 0.75rem 0;
+    }
+
+    .timeline-event:last-child .line {
+        min-height: 1.5rem;
+    }
+
+    .job-details {
+        order: 1 !important;
+    }
+
+    .job-details h4 {
+        font-size: 1.5rem;
+    }
+
+    .job-details h5 {
+        font-size: 1rem;
+    }
+
+    .job-details p {
+        padding: 1rem 0 0 0;
+        font-size: 0.9rem;
+    }
 }

@@ -1,5 +1,27 @@
 ﻿.icons-section {
     display: flex;
-    width: 70%;
-    justify-content: space-around;
+    width: 90%;
+    max-width: 1200px;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: clamp(2rem, 4vw, 4rem);
+    padding: clamp(2rem, 4vw, 4rem) 1rem;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+    .icons-section {
+        width: 95%;
+        gap: 2rem;
+        padding: 2rem 1rem;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .icons-section {
+        width: 100%;
+        gap: 1.5rem;
+        padding: 1.5rem 0.5rem;
+    }
 }

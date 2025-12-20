@@ -21,7 +21,7 @@ namespace Api
         }
 
         [Function("Post")]
-        public async Task<IActionResult> RunPost([HttpTrigger(AuthorizationLevel.Function, "post", Route = "contact")] HttpRequest req)
+        public async Task<IActionResult> RunPost([HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "contact")] HttpRequest req)
         {
             _logger.LogInformation("C# HTTP trigger function processed a request.");
 

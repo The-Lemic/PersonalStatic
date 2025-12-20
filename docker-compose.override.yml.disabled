@@ -2,11 +2,19 @@ version: '3.8'
 
 services:
   client:
+    build:
+      context: .
+      dockerfile: Client/Dockerfile.dev
+    ports:
+      - "5000:5000"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - DOTNET_USE_POLLING_FILE_WATCHER=true
     volumes:
       - ./Client:/src/Client:cached
       - ./Shared:/src/Shared:cached
+    stdin_open: true
+    tty: true
 
   api:
     build:
@@ -17,13 +25,11 @@ services:
       - AzureFunctionsJobHost__Logging__Console__IsEnabled=true
       - DOTNET_USE_POLLING_FILE_WATCHER=true
       - DOTNET_RUNNING_IN_CONTAINER=true
-      - SMTPHost=localhost
-      - SMTPUsername=dev@example.com
-      - SMTPPassword=devpassword
+      - SMTPHost=${SMTP_HOST}
+      - SMTPUsername=${SMTP_USERNAME}
+      - SMTPPassword=${SMTP_PASSWORD}
     volumes:
       - ./DockerFunctions:/src/DockerFunctions:cached
       - ./Shared:/src/Shared:cached
-      # Mount dotnet tools and nuget cache for better performance
-      - ~/.nuget/packages:/root/.nuget/packages:cached
     stdin_open: true
     tty: true

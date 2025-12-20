@@ -1,0 +1,25 @@
+# Development Dockerfile with hot reload for Blazor WebAssembly
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS development
+
+WORKDIR /src
+
+# Copy project files
+COPY ["Client/Client.csproj", "Client/"]
+COPY ["Shared/Shared.csproj", "Shared/"]
+
+# Restore dependencies
+RUN dotnet restore "Client/Client.csproj"
+
+# Copy source code (will be overridden by volume mount)
+COPY . .
+
+WORKDIR /src/Client
+
+# Enable file watcher polling for cross-platform compatibility
+ENV DOTNET_USE_POLLING_FILE_WATCHER=true
+ENV ASPNETCORE_ENVIRONMENT=Development
+
+EXPOSE 5000
+
+# Use dotnet watch for hot reload
+CMD ["dotnet", "watch", "run", "--urls", "http://0.0.0.0:5000"]

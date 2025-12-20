@@ -1,21 +1,52 @@
-﻿.icon{
-    height:100px;
+﻿.icon {
+    height: clamp(4rem, 8vw, 6.25rem);
+    width: clamp(4rem, 8vw, 6.25rem);
     background-color: transparent;
-    margin-bottom: 20px;
+    margin-bottom: clamp(0.75rem, 2vw, 1.25rem);
 }
 
-.pad
-{
-    padding: 15px 0px;
+.pad {
+    padding: clamp(0.75rem, 2vw, 1rem) 0;
 }
 
 .card {
     background-color: transparent;
-    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: clamp(5rem, 12vw, 8rem);
 }
 
 p {
     color: var(--light);
-    text-align:center;
-    font-size: 20px;
+    text-align: center;
+    font-size: clamp(0.875rem, 1.8vw, 1.25rem);
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+    .icon {
+        height: clamp(3.5rem, 10vw, 5rem);
+        width: clamp(3.5rem, 10vw, 5rem);
+    }
+
+    p {
+        font-size: clamp(0.875rem, 2.5vw, 1.125rem);
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .icon {
+        height: clamp(3rem, 15vw, 4rem);
+        width: clamp(3rem, 15vw, 4rem);
+    }
+
+    .card {
+        min-width: clamp(4rem, 20vw, 6rem);
+    }
+
+    p {
+        font-size: clamp(0.75rem, 4vw, 1rem);
+    }
 }
