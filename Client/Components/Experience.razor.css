@@ -1,6 +1,8 @@
 ﻿.timeline {
     color: var(--light);
-    padding: clamp(1rem, 3vw, 2rem);
+    padding: 0.5rem clamp(1rem, 3vw, 2rem) clamp(1rem, 3vw, 2rem);
+    width: 100%;
+    max-width: 1800px;
 }
 
 .dot {
@@ -22,9 +24,16 @@
     gap: clamp(1rem, 2vw, 2rem);
 }
 
-.timeline-heading, .job-details, .spacer {
-    width: 40%;
-    max-width: 600px;
+.timeline-heading {
+    width: 45%;
+    max-width: 800px;
+    text-align: left;
+    margin-left: calc((100% - 45% - 45% - clamp(3rem, 6vw, 3.75rem) - clamp(1rem, 2vw, 2rem) * 2) / 2);
+}
+
+.job-details, .spacer {
+    width: 45%;
+    max-width: 800px;
 }
 
 .line-container {
@@ -51,14 +60,15 @@
 }
 
 .timeline-heading h3 {
-    font-size: clamp(2rem, 5vw, 3.375rem);
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
     margin: 0;
+    line-height: 1.2;
 }
 
 .timeline-heading p {
     font-size: clamp(1rem, 2vw, 1.25rem);
     color: #CBCBCB;
-    margin: 0;
+    margin: 0.5rem 0 0 0;
 }
 
 .job-details {
@@ -86,7 +96,7 @@
     }
 
 /* Timeline on left layout for smaller screens */
-@media (max-width: 900px) {
+@media (max-width: 768px) {
     .timeline {
         padding: 1.5rem 1rem;
     }

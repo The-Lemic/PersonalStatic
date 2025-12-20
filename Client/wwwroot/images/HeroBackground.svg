@@ -1,6 +1,130 @@
 <svg width="1903" height="747" viewBox="0 0 1903 747" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M988.423 494.388C1061.77 593.688 938.922 658.167 849.103 573.439C834.185 559.366 816.775 549.697 795.052 550.07C781.974 550.294 770.001 550.692 759.261 550.932C668.229 552.971 728.573 422.14 796.265 361.31V361.31C830.704 330.362 884.389 385.227 918.056 417.019C947.808 445.115 971.08 470.911 988.423 494.388Z" fill="#AA256F" fill-opacity="0.5"/>
-<path d="M695.12 228.074C646.94 274.295 572.437 304.29 507.906 287.033C465.107 275.589 440.869 234.482 440.869 170.78C440.869 104.785 488.838 180.092 572.008 114.646V114.646C664.51 41.8568 790.039 117.844 714.133 207.795C708.167 214.864 701.781 221.683 695.12 228.074Z" fill="#AA256F" fill-opacity="0.5"/>
-<path d="M1715.54 218.634C1703.17 138.065 1821.88 119.34 1849.91 195.893C1856.31 213.395 1866.85 228.317 1888.99 232.758C1939.07 242.807 1927.63 323.477 1889.64 388.122C1860.41 437.86 1786.01 475.595 1798.42 419.253V419.253C1808.34 374.183 1757.53 325.006 1737.43 283.443C1725.5 258.771 1718.39 237.201 1715.54 218.634Z" fill="#AA256F" fill-opacity="0.5"/>
-<path d="M177.284 557.609C178.696 431.745 126.122 356.027 3.27879 383.886C-18.3955 388.801 -27.2016 383.275 -10.28 351.138C-1.36982 334.216 10.8666 319.975 25.4284 308.221C152.402 205.729 332.928 374.456 245.843 512.405V512.405C226.693 542.739 177.37 598.043 177.264 562.173C177.26 560.694 177.267 559.172 177.284 557.609Z" fill="#AA256F" fill-opacity="0.5"/>
+  <defs>
+    <filter id="goo">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
+      <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 40 -15" result="goo" />
+      <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
+    </filter>
+  </defs>
+  <rect width="1903" height="747" fill="#C62368"/>
+  <g filter="url(#goo)">
+    <!-- Blob 1 - Medium size - Slow drift left to right - starts on screen -->
+    <path fill="#AA256F" fill-opacity="0.7">
+      <animate attributeName="d"
+          values="M350,150 Q480,120 580,180 T540,280 Q480,320 340,290 T230,200 Q250,150 350,150;
+                    M380,130 Q510,100 610,160 T570,260 Q510,300 370,270 T260,180 Q280,130 380,130;
+                    M350,150 Q480,120 580,180 T540,280 Q480,320 340,290 T230,200 Q250,150 350,150;"
+          dur="20s" repeatCount="indefinite" />
+      <animate attributeName="cx" values="300;950;2050;300" dur="150s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.33;0.66;1" keySplines="0.33 0 0.67 1; 0.33 0 0.67 1; 0.33 0 0.67 1" />
+      <animate attributeName="cy" values="220;180;260;220" dur="65s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.33;0.66;1" keySplines="0.33 0 0.67 1; 0.33 0 0.67 1; 0.33 0 0.67 1" />
+    </path>
+    <circle cx="400" cy="220" r="70" fill="#AA256F" fill-opacity="0.7">
+    </circle>
+    <circle cx="450" cy="240" r="50" fill="#AA256F" fill-opacity="0.7">
+      <animate attributeName="cx" values="350;1000;2100;350" dur="150s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.33;0.66;1" keySplines="0.33 0 0.67 1; 0.33 0 0.67 1; 0.33 0 0.67 1" />
+      <animate attributeName="cy" values="240;200;280;240" dur="60s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.33;0.66;1" keySplines="0.33 0 0.67 1; 0.33 0 0.67 1; 0.33 0 0.67 1" />
+      <animate attributeName="r" values="50;65;58;50" dur="7s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.33;0.66;1" keySplines="0.33 0 0.67 1; 0.33 0 0.67 1; 0.33 0 0.67 1" />
+    </circle>
+
+    <!-- Blob 2 - Large size - Very slow drift right to left - starts on screen -->
+    <path fill="#AA256F" fill-opacity="0.7">
+      <animate attributeName="d"
+          values="M1500,120 Q1600,90 1700,180 T1650,350 Q1570,420 1430,370 T1330,220 Q1370,140 1500,120;
+                    M1530,100 Q1630,70 1730,160 T1680,330 Q1600,400 1460,350 T1360,200 Q1400,120 1530,100;
+                    M1470,140 Q1570,110 1670,200 T1620,370 Q1540,440 1400,390 T1300,240 Q1340,160 1470,140;
+                    M1500,120 Q1600,90 1700,180 T1650,350 Q1570,420 1430,370 T1330,220 Q1370,140 1500,120"
+          dur="13s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.5;1" keySplines="0.45 0.05 0.55 0.95; 0.45 0.05 0.55 0.95"/>
+      <animate attributeName="cy" values="235;245;235" dur="98s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.5;1" keySplines="0.45 0.05 0.55 0.95; 0.45 0.05 0.55 0.95" />
+      <animate attributeName="r" values="95;115;105;95" dur="7s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.33;0.66;1" keySplines="0.33 0 0.67 1; 0.33 0 0.67 1; 0.33 0 0.67 1" />
+    </path>
+    <circle cx="1500" cy="190" r="120" fill="#AA256F" fill-opacity="0.7">
+      <animate attributeName="cx" values="1600;950;-250;1600" dur="180s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.33;0.66;1" keySplines="0.33 0 0.67 1; 0.33 0 0.67 1; 0.33 0 0.67 1" />
+      <animate attributeName="cy" values="185;195;185" dur="100s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.5;1" keySplines="0.45 0.05 0.55 0.95; 0.45 0.05 0.55 0.95" />
+      <animate attributeName="r" values="120;140;130;120" dur="8s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.33;0.66;1" keySplines="0.33 0 0.67 1; 0.33 0 0.67 1; 0.33 0 0.67 1" />
+    </circle>
+    <circle cx="1450" cy="240" r="95" fill="#AA256F" fill-opacity="0.7">
+      <animate attributeName="cx" values="1550;900;-300;1550" dur="180s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.33;0.66;1" keySplines="0.33 0 0.67 1; 0.33 0 0.67 1; 0.33 0 0.67 1" />
+      <animate attributeName="cy" values="235;245;235" dur="98s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.5;1" keySplines="0.45 0.05 0.55 0.95; 0.45 0.05 0.55 0.95" />
+      <animate attributeName="r" values="95;115;105;95" dur="7s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.33;0.66;1" keySplines="0.33 0 0.67 1; 0.33 0 0.67 1; 0.33 0 0.67 1" />
+    </circle>
+
+    <!-- Blob 3 - Small size - Fast drift left to right - starts on screen -->
+    <path fill="#AA256F" fill-opacity="0.7">
+      <animate attributeName="d"
+          values="M750,520 Q810,505 860,545 T840,615 Q795,645 740,620 T700,555 Q720,525 750,520;
+                    M770,500 Q830,485 880,525 T860,595 Q815,625 760,600 T720,535 Q740,505 770,500;
+                    M730,540 Q790,525 840,565 T820,635 Q775,665 720,640 T680,575 Q700,545 730,540;
+                    M750,520 Q810,505 860,545 T840,615 Q795,645 740,620 T700,555 Q720,525 750,520"
+          dur="19s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.33;0.66;1" keySplines="0.33 0 0.67 1; 0.33 0 0.67 1; 0.33 0 0.67 1" />
+      <animate attributeName="r" values="50;60;55;50" dur="5s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.33;0.66;1" keySplines="0.33 0 0.67 1; 0.33 0 0.67 1; 0.33 0 0.67 1" />
+    </path>
+    <circle cx="800" cy="530" r="50" fill="#AA256F" fill-opacity="0.7">
+      <animate attributeName="cx" values="650;1200;2100;650" dur="140s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.33;0.66;1" keySplines="0.33 0 0.67 1; 0.33 0 0.67 1; 0.33 0 0.67 1" />
+      <animate attributeName="cy" values="530;470;590;530" dur="75s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.33;0.66;1" keySplines="0.33 0 0.67 1; 0.33 0 0.67 1; 0.33 0 0.67 1" />
+      <animate attributeName="r" values="50;60;55;50" dur="5s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.33;0.66;1" keySplines="0.33 0 0.67 1; 0.33 0 0.67 1; 0.33 0 0.67 1" />
+    </circle>
+    <circle cx="850" cy="510" r="40" fill="#AA256F" fill-opacity="0.7">
+      <animate attributeName="cx" values="700;1250;2150;700" dur="140s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.33;0.66;1" keySplines="0.33 0 0.67 1; 0.33 0 0.67 1; 0.33 0 0.67 1" />
+      <animate attributeName="cy" values="510;450;570;510" dur="72s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.33;0.66;1" keySplines="0.33 0 0.67 1; 0.33 0 0.67 1; 0.33 0 0.67 1" />
+      <animate attributeName="r" values="40;52;46;40" dur="6s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.33;0.66;1" keySplines="0.33 0 0.67 1; 0.33 0 0.67 1; 0.33 0 0.67 1" />
+    </circle>
+
+    <!-- Blob 4 - Medium-Large size - Medium drift right to left - starts off screen right -->
+    <path fill="#AA256F" fill-opacity="0.7">
+      <animate attributeName="d"
+          values="M1850,500 Q1980,470 2080,560 T2030,710 Q1950,770 1840,710 T1790,560 Q1820,510 1850,500;
+                    M1880,480 Q2010,450 2110,540 T2060,690 Q1980,750 1870,690 T1820,540 Q1850,490 1880,480;
+                    M1820,520 Q1950,490 2050,580 T2000,730 Q1920,790 1810,730 T1760,580 Q1790,530 1820,520;
+                    M1850,500 Q1980,470 2080,560 T2030,710 Q1950,770 1840,710 T1790,560 Q1820,510 1850,500"
+          dur="11s" repeatCount="indefinite" />
+    </path>
+    <circle cx="1700" cy="590" r="85" fill="#AA256F" fill-opacity="0.7">
+      <animate attributeName="cx" values="1900;800;-300;1900" dur="165s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.33;0.66;1" keySplines="0.33 0 0.67 1; 0.33 0 0.67 1; 0.33 0 0.67 1" />
+      <animate attributeName="cy" values="585;595;585" dur="93s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.5;1" keySplines="0.45 0.05 0.55 0.95; 0.45 0.05 0.55 0.95" />
+      <animate attributeName="r" values="85;105;95;85" dur="7s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.33;0.66;1" keySplines="0.33 0 0.67 1; 0.33 0 0.67 1; 0.33 0 0.67 1" />
+    </circle>
+    <circle cx="1750" cy="550" r="70" fill="#AA256F" fill-opacity="0.7">
+      <animate attributeName="cx" values="1950;850;-250;1950" dur="165s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.33;0.66;1" keySplines="0.33 0 0.67 1; 0.33 0 0.67 1; 0.33 0 0.67 1" />
+      <animate attributeName="cy" values="545;555;545" dur="90s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.5;1" keySplines="0.45 0.05 0.55 0.95; 0.45 0.05 0.55 0.95" />
+      <animate attributeName="r" values="70;88;79;70" dur="8s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.33;0.66;1" keySplines="0.33 0 0.67 1; 0.33 0 0.67 1; 0.33 0 0.67 1" />
+    </circle>
+
+    <!-- Blob 5 - Medium size - Slow drift right to left - starts on screen -->
+    <path fill="#AA256F" fill-opacity="0.7">
+      <animate
+        attributeName="d"
+        dur="10s"
+        repeatCount="indefinite"
+        calcMode="spline"
+        keyTimes="0;0.25;0.5;0.75;1"
+        keySplines="
+      0.42 0 0.58 1;
+      0.42 0 0.58 1;
+      0.42 0 0.58 1;
+      0.42 0 0.58 1"
+        values="
+      M1130,330 Q1230,300 1310,360 T1280,460 Q1230,510 1120,480 T1050,380 Q1080,340 1130,330;
+
+      M1100,350 Q1180,320 1290,380 T1260,480 Q1210,500 1100,500 T1020,400 Q1050,360 1100,350;
+
+      M1070,370 Q1070,350 1250,400 T1220,500 Q1170,460 1060,520 T990,420 Q1020,380 1070,370;
+
+      M1100,350 Q1180,320 1290,380 T1260,480 Q1210,500 1100,500 T1020,400 Q1050,360 1100,350;
+
+      M1130,330 Q1230,300 1310,360 T1280,460 Q1230,510 1120,480 T1050,380 Q1080,340 1130,330
+    "
+  />
+    </path>
+
+    <circle cx="1150" cy="400" r="65" fill="#AA256F" fill-opacity="0.7">
+      <animate attributeName="cx" values="1250;600;-200;1250" dur="135s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.33;0.66;1" keySplines="0.33 0 0.67 1; 0.33 0 0.67 1; 0.33 0 0.67 1" />
+      <animate attributeName="cy" values="395;405;395" dur="105s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.5;1" keySplines="0.45 0.05 0.55 0.95; 0.45 0.05 0.55 0.95" />
+      <animate attributeName="r" values="65;80;72;65" dur="6s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.33;0.66;1" keySplines="0.33 0 0.67 1; 0.33 0 0.67 1; 0.33 0 0.67 1" />
+    </circle>
+    <circle cx="1100" cy="430" r="55" fill="#AA256F" fill-opacity="0.7">
+      <animate attributeName="cx" values="1200;550;-250;1200" dur="135s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.33;0.66;1" keySplines="0.33 0 0.67 1; 0.33 0 0.67 1; 0.33 0 0.67 1" />
+      <animate attributeName="cy" values="425;435;425" dur="102s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.5;1" keySplines="0.45 0.05 0.55 0.95; 0.45 0.05 0.55 0.95" />
+      <animate attributeName="r" values="55;68;61;55" dur="7s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.33;0.66;1" keySplines="0.33 0 0.67 1; 0.33 0 0.67 1; 0.33 0 0.67 1" />
+    </circle>
+  </g>
 </svg>
