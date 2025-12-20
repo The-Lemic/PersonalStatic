@@ -7,19 +7,47 @@
     
     <div class="card-container">
 
-        <div onclick="window.open('https://github.com/GeorgeCarr44/Streak','_blank');" class="myDiv card streak" style="background-color: #4ECE63">
-            <h4>Streak</h4>
-            <p class="overlay-text">Habit Tracker app in .Net Maui</p>
+        <div onclick="window.open('https://github.com/GeorgeCarr44/Streak','_blank');" class="myDiv card streak">
+            <span class="external-link-icon">&#x2197;</span>
+            <div class="card-image" style="background-color: #4ECE63">
+                <h4>Streak</h4>
+            </div>
+            <div class="card-content">
+                <h4>Streak</h4>
+                <p>Habit Tracker app in .Net Maui, This was one of my first steps into making a mobile application. The plan was to make a simple habit tracker after I had finished reading <a href="https://www.goodreads.com/book/show/40121378-atomic-habits">Atomic Habits</a></p>
+            </div>
         </div>
 
-        <div onclick="window.open('https://github.com/GeorgeCarr44/AdventOfCode','_blank');" class="card AdventOfCode" style="background-color: #000000">
-            <h4>Advent of Code</h4>
-            <p class="overlay-text">Yearly Coding Challenges</p>
+        <div onclick="window.open('https://github.com/GeorgeCarr44/AdventOfCode','_blank');" class="card AdventOfCode">
+            <span class="external-link-icon">&#x2197;</span>
+            <div class="card-image" style="background-color: #000000">
+                <h4>Advent of Code</h4>
+            </div>
+            <div class="card-content">
+                <h4>Advent of Code</h4>
+                <p><a href="https://adventofcode.com/">Yearly Coding Challenges</a>. These have been done in C#. I never get through as many of these as I would like. This year I'm planning to learn GO</p>
+            </div>
         </div>
 
-        <div onclick="window.open('https://github.com/GeorgeCarr44/PersonalStatic','_blank');" class="card personal" style="background-image: url(images/hero-layered-waves.svg)">
-            <h4>Personal Site</h4>
-            <p class="overlay-text">Blazor website on Azure</p>
+        <div onclick="window.open('https://github.com/GeorgeCarr44/PersonalStatic','_blank');" class="card personal">
+            <span class="external-link-icon">&#x2197;</span>
+            <div class="card-image" style="background-image: url(images/hero-layered-waves.svg); background-color: var(--primary);">
+                <img src="images/logo.svg" alt="Personal Site Logo" class="card-logo" />
+            </div>
+            <div class="card-content">
+                <h4>Personal Site</h4>
+                <p>Blazor SPA website hosted on Azure Static Web App. This was mainly a design challenge where I used Figma to wireframe. Then Blazor WASM and CSS and Azure Functions to handle email sending.</p>
+            </div>
+        </div>
+
+        <div onclick="window.open('https://dnd.thelemic.co.uk/','_blank');" class="card ruby">
+            <span class="external-link-icon">&#x2197;</span>
+            <div class="card-image" style="background-image: url(images/obsidian-favicon.svg); background-color: #1a1a1a; background-size: 50%; background-position: center;">
+            </div>
+            <div class="card-content">
+                <h4>Ruby</h4>
+                <p>Running a D&D 5e Campaign takes a lot of notes. I have been into <a href="https://zettelkasten.de/overview/">zettelkasten</a> for a few years and already store all of my notes in <a href="https://obsidian.md/">Obsidian.</a> So I created an interactive wiki using <a href="https://quartz.jzhao.xyz/">Quartz.</a> This app has a full CI/CD pipeline to publish any changes made to the notes and also has a community area for my players to publish.</p>
+            </div>
         </div>
     </div>
     <hr/>

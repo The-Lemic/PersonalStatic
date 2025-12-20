@@ -53,7 +53,7 @@
 button,
 .button-link {
     color: var(--light);
-    background-color:;
+    background-color: transparent;
     border-radius: clamp(1.5rem, 2vw, 2.2rem);
     border: 2px solid var(--secondary);
     height: clamp(3rem, 4.5vw, 4.5rem);
@@ -128,7 +128,6 @@ button:hover,
 
     button,
     .button-link {
-        height: 3.5rem;
         width: clamp(160px, 40vw, 220px);
         font-size: 1rem;
     }

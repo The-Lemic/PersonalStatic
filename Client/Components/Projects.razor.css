@@ -19,35 +19,67 @@
 }
 
 .card {
-    aspect-ratio: 414/286;
     width: clamp(250px, 30%, 450px);
     min-width: 250px;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    border: 0;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: clamp(0.75rem, 2vw, 1.25rem);
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    box-shadow: inset 0px 0px 4px #000;
-    transition-duration: 0.4s;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
+    position: relative;
 }
 
     .card:hover {
-        box-shadow: inset 0px 0px 20px 1px #000;
+        transform: translateY(-4px);
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
     }
+
+.external-link-icon {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: var(--light);
+    z-index: 10;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.card:hover .external-link-icon {
+    opacity: 1;
+}
+
+.card-image {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-logo {
+    width: 30%;
+    box-shadow: 8px 8px 15px black;
+    object-fit: contain;
+}
+
+.card-content {
+    padding: clamp(1rem, 2vw, 1.5rem);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
 
 p {
     color: var(--light);
-    font-size: clamp(1.25rem, 3vw, 1.875rem);
-}
-
-.overlay-text {
-    position: absolute;
-    bottom: 0;
+    font-size: clamp(1rem, 2vw, 1.125rem);
 }
 
 @font-face {
@@ -55,7 +87,12 @@ p {
     src: url('fonts/Roboto-Black.ttf') format('truetype');
 }
 
-.AdventOfCode h4 {
+.card-image h4 {
+    margin: 0;
+    padding: 0;
+}
+
+.AdventOfCode .card-image h4 {
     font-size: clamp(1.75rem, 4vw, 2.5rem);
     display: inline-block;
     text-decoration: none;
@@ -63,32 +100,37 @@ p {
     text-shadow: 0 0 4px #00cc00, 0 0 5px #00cc00;
 }
 
-.streak h4 {
+.streak .card-image h4 {
     font-family: "Roboto";
     font-weight: 900;
     color: #000;
     font-size: clamp(2.5rem, 6vw, 3.75rem);
 }
 
-.personal h4 {
+.personal .card-image h4 {
     font-family: "Nats";
     color: var(--light);
     font-size: clamp(2rem, 5vw, 3.125rem);
 }
 
-.card p {
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 0s 0.2s, opacity 0.2s linear;
-    text-align: center;
-    padding: 0 clamp(0.5rem, 2vw, 1rem);
-    margin: 0;
+.ruby .card-image h4 {
+    font-family: "Nats";
+    color: var(--light);
+    font-size: clamp(2rem, 5vw, 3.125rem);
+    text-shadow: 0 2px 8px rgba(255, 82, 82, 0.5);
 }
 
-.card:hover p {
-    visibility: visible;
-    opacity: 1;
-    transition: opacity 0.2s linear;
+.card-content h4 {
+    font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+    color: var(--light);
+    margin: 0 0 0.25rem 0;
+}
+
+.card p {
+    text-align: left;
+    padding: 0;
+    margin: 0;
+    line-height: 1.5;
 }
 
 /* Tablet */
@@ -109,16 +151,28 @@ p {
         min-width: 200px;
     }
 
-    .AdventOfCode h4 {
+    .external-link-icon {
+        font-size: 1.75rem;
+    }
+
+    .AdventOfCode .card-image h4 {
         font-size: 2rem;
     }
 
-    .streak h4 {
+    .streak .card-image h4 {
         font-size: 3rem;
     }
 
-    .personal h4 {
+    .personal .card-image h4 {
         font-size: 2.25rem;
+    }
+
+    .ruby .card-image h4 {
+        font-size: 2.25rem;
+    }
+
+    .card-content h4 {
+        font-size: 1.25rem;
     }
 }
 
@@ -141,19 +195,33 @@ p {
         max-width: 350px;
     }
 
-    p {
-        font-size: 1.125rem;
+    .external-link-icon {
+        font-size: 1.5rem;
+        top: 0.5rem;
+        left: 0.5rem;
     }
 
-    .AdventOfCode h4 {
+    p {
+        font-size: 1rem;
+    }
+
+    .AdventOfCode .card-image h4 {
         font-size: 1.5rem;
     }
 
-    .streak h4 {
+    .streak .card-image h4 {
         font-size: 2.5rem;
     }
 
-    .personal h4 {
+    .personal .card-image h4 {
         font-size: 2rem;
+    }
+
+    .ruby .card-image h4 {
+        font-size: 2rem;
+    }
+
+    .card-content h4 {
+        font-size: 1.125rem;
     }
 }

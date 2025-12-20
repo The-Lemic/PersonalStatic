@@ -6,100 +6,139 @@
     background-position: center;
     background-size: cover;
     background-image: url(images/footer.svg);
-    padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 2rem);
+    padding: clamp(3rem, 8vw, 6rem) clamp(1rem, 3vw, 2rem);
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 .title {
-    margin-top: clamp(8%, 15%, 20%);
+    margin-top: 0;
     font-size: clamp(1.5rem, 3vw, 2.5rem);
-    margin-bottom: 2rem;
+    margin-bottom: clamp(2rem, 4vw, 3rem);
     text-align: center;
+    padding-bottom: 0;
 }
 
 /* Contact Form Styling */
 .contact-form {
     width: 100%;
-    max-width: 600px;
+    max-width: 520px;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: clamp(1rem, 2.5vw, 1.25rem);
 }
 
 .form-group {
     width: 100%;
+    position: relative;
 }
 
+/* Style all inputs and textarea */
 .form-input,
-.form-textarea {
-    width: 100%;
-    padding: 1rem 1.5rem;
-    font-size: 1rem;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.05);
-    color: #fff;
-    transition: all 0.3s ease;
+.form-textarea,
+input.form-input,
+textarea.form-textarea,
+.form-group input,
+.form-group textarea {
+    width: 100% !important;
+    padding: clamp(0.875rem, 2vw, 1rem) clamp(1rem, 2.5vw, 1.25rem) !important;
+    font-size: clamp(0.95rem, 1.8vw, 1.05rem) !important;
+    background-color: #D9D9D9 !important;
+    border: none !important;
+    border-radius: clamp(0.625rem, 1.5vw, 0.75rem) !important;
+    color: #333 !important;
     font-family: inherit;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+}
+
+/* Add icons to name and email inputs - targeting by position */
+.form-group:nth-child(2) input,
+.form-group:nth-child(2) .form-input {
+    background-image: url('images/PersonIcon.svg') !important;
+    background-repeat: no-repeat !important;
+    background-position: clamp(0.875rem, 2vw, 1rem) center !important;
+    background-size: clamp(1.125rem, 2.5vw, 1.375rem) auto !important;
+    background-color: #D9D9D9 !important;
+    padding-left: clamp(3rem, 6vw, 3.5rem) !important;
+}
+
+.form-group:nth-child(3) input,
+.form-group:nth-child(3) .form-input {
+    background-image: url('images/EmailIcon.svg') !important;
+    background-repeat: no-repeat !important;
+    background-position: clamp(0.875rem, 2vw, 1rem) center !important;
+    background-size: clamp(1.375rem, 3vw, 1.625rem) auto !important;
+    background-color: #D9D9D9 !important;
+    padding-left: clamp(3rem, 6vw, 3.5rem) !important;
 }
 
 .form-input::placeholder,
-.form-textarea::placeholder {
-    color: rgba(255, 255, 255, 0.5);
+.form-textarea::placeholder,
+input::placeholder,
+textarea::placeholder {
+    color: rgba(0, 0, 0, 0.45) !important;
 }
 
 .form-input:focus,
-.form-textarea:focus {
-    outline: none;
-    border-color: rgba(255, 255, 255, 0.5);
-    background: rgba(255, 255, 255, 0.1);
+.form-textarea:focus,
+input:focus,
+textarea:focus {
+    outline: none !important;
+    background-color: #E5E5E5 !important;
 }
 
 .form-textarea {
     resize: vertical;
-    min-height: 120px;
+    min-height: clamp(200px, 28vh, 250px);
+    padding-top: clamp(1rem, 2.5vw, 1.25rem);
 }
 
 .btn-send {
-    padding: 1rem 2.5rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #fff;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: var(--light);
+    background-color: #4F2B64;
+    border-radius: clamp(1.875rem, 3.5vw, 2.5rem);
     border: none;
-    border-radius: 8px;
-    cursor: pointer;
+    height: clamp(3rem, 5vw, 3.5rem);
+    width: clamp(200px, 40%, 250px);
+    font-size: clamp(1rem, 1.8vw, 1.125rem);
+    font-weight: 600;
+    outline: none;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    cursor: pointer;
+    margin-top: clamp(1rem, 2.5vw, 1.5rem);
+    align-self: center;
 }
 
 .btn-send:hover:not(:disabled) {
+    background-color: #5F3B74;
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+    box-shadow: 0 4px 12px rgba(79, 43, 100, 0.4);
 }
 
 .btn-send:disabled {
-    opacity: 0.7;
+    opacity: 0.6;
     cursor: not-allowed;
 }
 
 /* Success Message */
 .success-message {
+    width: 100%;
     max-width: 600px;
-    padding: 2rem;
-    background: rgba(76, 175, 80, 0.15);
-    border: 2px solid rgba(76, 175, 80, 0.5);
-    border-radius: 12px;
+    padding: clamp(1.5rem, 3vw, 2rem);
+    background: rgba(76, 175, 80, 0.12);
+    border: 2px solid rgba(76, 175, 80, 0.4);
+    border-radius: clamp(0.75rem, 1.5vw, 1rem);
     text-align: center;
-    margin-top: 2rem;
 }
 
 .success-message p {
-    color: #fff;
-    font-size: 1.2rem;
+    color: var(--light);
+    font-size: clamp(1.125rem, 2vw, 1.25rem);
     margin: 0;
+    line-height: 1.5;
 }
 
 /* Toast Notification */
@@ -152,15 +191,22 @@
 @media (max-width: 768px) {
     .contact {
         min-height: 500px;
-        padding: 2rem 1.5rem;
-    }
-
-    .title {
-        margin-top: 10%;
+        padding: 2.5rem 1.5rem;
     }
 
     .contact-form {
         max-width: 100%;
+        gap: 1.125rem;
+    }
+
+    .form-textarea {
+        min-height: 180px;
+    }
+
+    .btn-send {
+        width: clamp(180px, 50%, 240px);
+        font-size: 1.05rem;
+        margin-top: 1.25rem;
     }
 
     .toast {
@@ -175,23 +221,36 @@
     .contact {
         min-height: 400px;
         aspect-ratio: auto;
-        padding: 1.5rem 1rem;
+        padding: 2rem 1rem;
     }
 
-    .title {
-        margin-top: 5%;
-        font-size: 1.5rem;
+    .contact-form {
+        gap: 1rem;
     }
 
     .form-input,
     .form-textarea {
         padding: 0.875rem 1rem;
-        font-size: 0.95rem;
+        font-size: 1rem;
+    }
+
+    .form-group:nth-child(1) .form-input,
+    .form-group:nth-child(2) .form-input {
+        padding-left: 2.75rem;
+        background-size: 1.25rem auto;
+        background-position: 0.875rem center;
+    }
+
+    .form-textarea {
+        min-height: 160px;
     }
 
     .btn-send {
-        padding: 0.875rem 2rem;
+        width: 100%;
+        max-width: 280px;
         font-size: 1rem;
+        height: 3rem;
+        margin-top: 1.25rem;
     }
 
     .success-message {
@@ -199,6 +258,6 @@
     }
 
     .success-message p {
-        font-size: 1rem;
+        font-size: 1.125rem;
     }
 }

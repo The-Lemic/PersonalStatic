@@ -1,114 +1,105 @@
-﻿h4 {
-    color: #DD3C7F;
-    font-size: clamp(1.75rem, 4vw, 2.5rem);
-    font-family: NATS;
-    margin: 0 0 0.75rem 0;
-}
-
-p {
-    padding: clamp(0.75rem, 2vw, 1.25rem) 0;
-    font-size: clamp(1rem, 2.2vw, 1.375rem);
-    color: var(--light);
-    font-family: 'Numan';
-    line-height: 1.6;
-    margin: 0;
-}
-
-.card {
-    border: 0;
-    border-radius: clamp(0.75rem, 2vw, 1.25rem);
-    box-shadow: inset 0px 0px 4px #000;
-    width: 100%;
-    max-width: 800px;
-    aspect-ratio: 16/9;
-    object-fit: cover;
-    margin: 0 clamp(1rem, 2%, 2rem);
-    background-color: transparent;
-}
-
-.interests-container {
+﻿.interests-container {
     display: flex;
-    width: 85%;
+    flex-wrap: wrap;
+    width: 90%;
     max-width: 1400px;
     justify-content: center;
-    flex-direction: column;
-    gap: clamp(1.5rem, 3vw, 2.5rem);
-    padding: clamp(2rem, 4vw, 3rem) 1rem;
+    gap: clamp(1.5rem, 2vw, 2rem);
+    padding: clamp(2rem, 5vw, 5rem) 1rem;
 }
 
-.interest {
+.hobby-card {
+    width: clamp(250px, 30%, 400px);
+    min-width: 250px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: clamp(0.75rem, 2vw, 1.25rem);
     display: flex;
-    padding: clamp(1.5rem, 3vw, 2.5rem) 0;
-    gap: clamp(1rem, 2vw, 2rem);
-    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.info {
-    margin: clamp(0.5rem, 2%, 1.5rem);
+.hobby-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
+}
+
+.hobby-image {
     width: 100%;
+    aspect-ratio: 16/9;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.hobby-content {
+    padding: clamp(1rem, 2vw, 1.5rem);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.hobby-content h4 {
+    color: #DD3C7F;
+    font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+    font-family: NATS;
+    margin: 0 0 0.25rem 0;
+}
+
+.hobby-content p {
+    padding: 0;
+    font-size: clamp(1rem, 2vw, 1.125rem);
+    color: var(--light);
+    font-family: 'Numan';
+    line-height: 1.5;
+    margin: 0;
 }
 
 /* Tablet */
 @media (max-width: 768px) {
-    h4 {
-        font-size: 2rem;
-    }
-
-    p {
-        font-size: 1.125rem;
-    }
-
     .interests-container {
-        width: 90%;
-        padding: 2rem 1rem;
-        gap: 2rem;
+        width: 95%;
+        padding: 2.5rem 1rem;
+        gap: 1.5rem;
     }
 
-    .interest {
-        flex-direction: column;
-        padding: 2rem 0;
+    .hobby-card {
+        width: clamp(200px, 45%, 350px);
+        min-width: 200px;
     }
 
-    .card {
-        max-width: 100%;
-        margin: 0;
+    .hobby-content h4 {
+        font-size: 1.25rem;
     }
 
-    .info {
-        margin: 1rem 0;
-        text-align: center;
+    .hobby-content p {
+        font-size: 1rem;
     }
 }
 
 /* Mobile */
 @media (max-width: 480px) {
-    h4 {
-        font-size: 1.75rem;
-    }
-
-    p {
-        font-size: 1rem;
-        padding: 0.75rem 0;
-    }
-
     .interests-container {
-        width: 95%;
-        padding: 1.5rem 0.5rem;
-        gap: 1.5rem;
+        width: 100%;
+        padding: 2rem 0.5rem;
+        gap: 1.25rem;
+        flex-direction: column;
+        align-items: center;
     }
 
-    .interest {
-        padding: 1.5rem 0;
-        gap: 1rem;
+    .hobby-card {
+        width: 90%;
+        max-width: 350px;
     }
 
-    .card {
-        border-radius: 0.75rem;
+    .hobby-content h4 {
+        font-size: 1.125rem;
     }
 
-    .info {
-        margin: 0.5rem 0;
-        text-align: center;
+    .hobby-content p {
+        font-size: 0.9rem;
     }
 }
 

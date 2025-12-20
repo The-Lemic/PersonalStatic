@@ -51,12 +51,10 @@
 }
 
 .gradient {
-    border-image: linear-gradient(to bottom, var(--primary), transparent);
-    border-image-slice: 1;
+    border: none;
+    width: clamp(3px, 0.5vw, 5px);
+    background: linear-gradient(to bottom, var(--primary), transparent);
     border-radius: 0.3rem;
-    background-image: linear-gradient(var(--primary), var(--primary)), linear-gradient(to right, transparent, transparent);
-    background-origin: border-box;
-    background-clip: content-box, border-box;
 }
 
 .timeline-heading h3 {
@@ -119,7 +117,7 @@
     .timeline-event {
         flex-direction: row;
         gap: 1.5rem;
-        align-items: flex-start;
+        align-items: stretch;
     }
 
     .spacer {
@@ -133,6 +131,7 @@
         width: auto;
         flex-shrink: 0;
         order: 0 !important;
+        align-self: stretch;
     }
 
     .dot {
@@ -143,15 +142,7 @@
         flex-shrink: 0;
     }
 
-    .line {
-        min-height: 6rem;
-        flex-grow: 1;
-        width: 0;
-        border-left: 3px solid var(--primary);
-        margin: 0.75rem 0;
-    }
-
-    /* Last line should extend to the bottom */
+    /* Last line should be shorter */
     .timeline-event:last-child .line {
         min-height: 2rem;
     }
@@ -159,7 +150,8 @@
     .job-details {
         flex: 1;
         width: auto !important;
-        padding: 0 0 2.5rem 0;
+        padding: 0 0 0 0;
+        margin-bottom: 0.75rem;
         text-align: left;
         order: 1 !important;
     }
@@ -203,8 +195,7 @@
     }
 
     .line {
-        min-height: 5rem;
-        margin: 0.75rem 0;
+        margin: 0.75rem 0 ;
     }
 
     .timeline-event:last-child .line {
@@ -213,6 +204,7 @@
 
     .job-details {
         order: 1 !important;
+        margin-bottom: 0.75rem;
     }
 
     .job-details h4 {
@@ -259,16 +251,17 @@
     }
 
     .line {
-        min-height: 4rem;
-        margin: 0.75rem 0;
+        margin: 0.75rem 0 0 0;
     }
 
     .timeline-event:last-child .line {
+        flex-grow: 0;
         min-height: 1.5rem;
     }
 
     .job-details {
         order: 1 !important;
+        margin-bottom: 0.75rem;
     }
 
     .job-details h4 {
