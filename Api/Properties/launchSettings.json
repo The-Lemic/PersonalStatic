@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "DockerFunctions": {
+    "Api": {
       "commandName": "Project",
       "commandLineArgs": "--port 7273"
     },

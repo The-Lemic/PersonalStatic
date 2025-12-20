@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client", "Client\Client.csproj", "{F4B1375B-C892-424D-9CB2-9FE2B5B47EDF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DockerFunctions", "DockerFunctions\DockerFunctions.csproj", "{FA0C9A71-F25E-47DF-976C-75A8BCD84786}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Api\Api.csproj", "{FA0C9A71-F25E-47DF-976C-75A8BCD84786}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

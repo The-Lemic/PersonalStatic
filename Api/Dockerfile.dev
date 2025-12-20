@@ -16,22 +16,22 @@ RUN apt-get update && apt-get install -y \
 ENV ASPNETCORE_ENVIRONMENT=Development
 ENV DOTNET_USE_POLLING_FILE_WATCHER=true
 ENV DOTNET_RUNNING_IN_CONTAINER=true
-ENV AzureWebJobsScriptRoot=/src/DockerFunctions
+ENV AzureWebJobsScriptRoot=/src/Api
 ENV AzureFunctionsJobHost__Logging__Console__IsEnabled=true
 
 WORKDIR /src
 
 # Copy project files
-COPY ["DockerFunctions/DockerFunctions.csproj", "DockerFunctions/"]
+COPY ["Api/Api.csproj", "Api/"]
 COPY ["Shared/Shared.csproj", "Shared/"]
 
 # Restore dependencies
-RUN dotnet restore "DockerFunctions/DockerFunctions.csproj"
+RUN dotnet restore "Api/Api.csproj"
 
 # Copy source code (this will be overridden by volume mount)
 COPY . .
 
-WORKDIR /src/DockerFunctions
+WORKDIR /src/Api
 
 EXPOSE 8080
 

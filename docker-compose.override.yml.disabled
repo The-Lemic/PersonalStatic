@@ -19,7 +19,7 @@ services:
   api:
     build:
       context: .
-      dockerfile: DockerFunctions/Dockerfile.dev
+      dockerfile: Api/Dockerfile.dev
     environment:
       - AZURE_FUNCTIONS_ENVIRONMENT=Development
       - AzureFunctionsJobHost__Logging__Console__IsEnabled=true
@@ -29,7 +29,7 @@ services:
       - SMTPUsername=${SMTP_USERNAME}
       - SMTPPassword=${SMTP_PASSWORD}
     volumes:
-      - ./DockerFunctions:/src/DockerFunctions:cached
+      - ./Api:/src/Api:cached
       - ./Shared:/src/Shared:cached
     stdin_open: true
     tty: true
