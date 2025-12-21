@@ -29,7 +29,7 @@ namespace Api
 
                 // Read and parse request body
                 string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-                _logger.LogInformation($"Request body: {requestBody}");
+                _logger.LogInformation("Request body: {RequestBody}", requestBody);
 
                 var emailRequest = JsonConvert.DeserializeObject<EmailRequest>(requestBody);
 
@@ -62,7 +62,7 @@ namespace Api
                     return new ObjectResult("SMTP configuration error: SMTPPassword not configured") { StatusCode = 500 };
                 }
 
-                _logger.LogInformation($"SMTP Config - Host: {smtpHost}, Username: {smtpUsername}");
+                _logger.LogInformation("SMTP Config - Host: {SmtpHost}, Username: {SmtpUsername}", smtpHost, smtpUsername);
 
                 // Create email message
                 var email = new MimeMessage();
@@ -83,7 +83,7 @@ namespace Api
                 {
                     try
                     {
-                        _logger.LogInformation($"Connecting to SMTP server: {smtpHost}:587");
+                        _logger.LogInformation("Connecting to SMTP server: {SmtpHost}:587", smtpHost);
                         await smtp.ConnectAsync(smtpHost, 587, MailKit.Security.SecureSocketOptions.StartTls);
                         _logger.LogInformation("Connected to SMTP server");
 
@@ -100,8 +100,8 @@ namespace Api
                     }
                     catch (Exception smtpEx)
                     {
-                        _logger.LogError($"SMTP error: {smtpEx.GetType().Name} - {smtpEx.Message}");
-                        _logger.LogError($"Stack trace: {smtpEx.StackTrace}");
+                        _logger.LogError("SMTP error: {ExceptionType} - {Message}", smtpEx.GetType().Name, smtpEx.Message);
+                        _logger.LogError("Stack trace: {StackTrace}", smtpEx.StackTrace);
                         return new ObjectResult($"Failed to send email: {smtpEx.Message}") { StatusCode = 500 };
                     }
                 }
@@ -111,8 +111,8 @@ namespace Api
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Unexpected error in ContactFunction: {ex.GetType().Name} - {ex.Message}");
-                _logger.LogError($"Stack trace: {ex.StackTrace}");
+                _logger.LogError("Unexpected error in ContactFunction: {ExceptionType} - {Message}", ex.GetType().Name, ex.Message);
+                _logger.LogError("Stack trace: {StackTrace}", ex.StackTrace);
                 return new ObjectResult($"Server error: {ex.Message}") { StatusCode = 500 };
             }
         }
