@@ -14,10 +14,12 @@ namespace Api
     public class ContactFunction
     {
         private readonly ILogger<ContactFunction> _logger;
+        private readonly RateLimitService _rateLimitService;
 
-        public ContactFunction(ILogger<ContactFunction> logger)
+        public ContactFunction(ILogger<ContactFunction> logger, RateLimitService rateLimitService)
         {
             _logger = logger;
+            _rateLimitService = rateLimitService;
         }
 
         [Function("Post")]
@@ -26,6 +28,17 @@ namespace Api
             try
             {
                 _logger.LogInformation("Contact form submission received");
+
+                // Get client IP address
+                var ipAddress = req.HttpContext.Connection.RemoteIpAddress?.ToString() ?? "unknown";
+                _logger.LogInformation("Request from IP: {IpAddress}", ipAddress);
+
+                // Check rate limiting
+                if (_rateLimitService.IsRateLimited(ipAddress))
+                {
+                    _logger.LogWarning("Rate limit exceeded for IP: {IpAddress}", ipAddress);
+                    return new ObjectResult("Too many requests. Please try again later.") { StatusCode = 429 };
+                }
 
                 // Read and parse request body
                 string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
@@ -37,6 +50,32 @@ namespace Api
                 {
                     _logger.LogWarning("Email request is null");
                     return new BadRequestObjectResult("Please pass a valid email request in the request body.");
+                }
+
+                // Server-side validation
+                if (string.IsNullOrWhiteSpace(emailRequest.Name))
+                {
+                    _logger.LogWarning("Name is required");
+                    return new BadRequestObjectResult("Name is required");
+                }
+
+                if (string.IsNullOrWhiteSpace(emailRequest.Email))
+                {
+                    _logger.LogWarning("Email is required");
+                    return new BadRequestObjectResult("Email is required");
+                }
+
+                if (string.IsNullOrWhiteSpace(emailRequest.Body))
+                {
+                    _logger.LogWarning("Message is required");
+                    return new BadRequestObjectResult("Message is required");
+                }
+
+                // Basic email validation
+                if (!emailRequest.Email.Contains("@") || !emailRequest.Email.Contains("."))
+                {
+                    _logger.LogWarning("Invalid email format: {Email}", emailRequest.Email);
+                    return new BadRequestObjectResult("Invalid email format");
                 }
 
                 // Validate environment variables
