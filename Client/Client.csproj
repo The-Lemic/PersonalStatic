@@ -5,6 +5,9 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
 	<RootNamespace>PersonalStaticApp.Client</RootNamespace>
+	<RunAOTCompilation>true</RunAOTCompilation>
+	<PublishTrimmed>true</PublishTrimmed>
+	<TrimMode>full</TrimMode>
   </PropertyGroup>
 
   <ItemGroup>
