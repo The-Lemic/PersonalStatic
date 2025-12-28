@@ -1,11 +1,13 @@
 @font-face {
     font-family: "NATS";
     src: url('fonts/NATS-Regular.ttf') format('truetype');
+    font-display: swap;
 }
 
 @font-face {
     font-family: "Numan";
     src: url('fonts/Numans-Regular.ttf') format('truetype');
+    font-display: swap;
 }
 
 .nats {
