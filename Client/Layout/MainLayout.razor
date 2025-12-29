@@ -15,9 +15,7 @@
 </div>
 
 @code {
-    [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)]
-    private static Type? _ensureTrimmerPreservesConstructor = typeof(MainLayout);
-
+    [DynamicDependency(DynamicallyAccessedMemberTypes.PublicParameterlessConstructor, typeof(MainLayout))]
     public MainLayout()
     {
     }
