@@ -109,7 +109,7 @@ button:hover,
     }
 
     .right img {
-        width: 60%;
+        width: 100%;
         max-width: 300px;
     }
 
@@ -145,7 +145,7 @@ button:hover,
     }
 
     .right img {
-        width: 70%;
+        width: 100%;
         max-width: 250px;
     }
 
