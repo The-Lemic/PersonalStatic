@@ -1,5 +1,4 @@
-﻿@using System.Diagnostics.CodeAnalysis
-@inherits LayoutComponentBase
+﻿@inherits LayoutComponentBase
 
 <div class="page">
     <main>
@@ -13,10 +12,3 @@
     <a href="" class="reload">Reload</a>
     <a class="dismiss">🗙</a>
 </div>
-
-@code {
-    [DynamicDependency(DynamicallyAccessedMemberTypes.PublicParameterlessConstructor, typeof(MainLayout))]
-    public MainLayout()
-    {
-    }
-}
